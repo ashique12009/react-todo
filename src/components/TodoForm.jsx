@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TodoList from './TodoList';
 
 const TodoForm = () => {
     const [title, setTitle] = useState("");
@@ -6,10 +7,10 @@ const TodoForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (title === "") {
-            alert("Please enter a task");
+            alert("Please enter task title first");
             return;
         }
-        console.log(title);
+        
         setTitle("");
     }
 
@@ -30,6 +31,8 @@ const TodoForm = () => {
                     </div>
                 </div>
             </form>
+
+            <TodoList />
         </>
     );
 };
