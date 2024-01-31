@@ -8,6 +8,10 @@ const TodoForm = () => {
     const [loader, setLoader] = useState(false);
     const [list, setList] = useState([]);
 
+    const onTitleClick = (itemTitle, itemId) => {
+        console.log('ITEM', itemTitle, itemId);
+    }
+
     const fetchData = async (operation = '') => {
         let requestURL = 'http://localhost/classic-php-todo-rest-api/index.php';
 
@@ -113,7 +117,7 @@ const TodoForm = () => {
 
             {loader && <div className="loader">Please wait!</div>}
 
-            <TodoList list={list} fetchData={fetchData} />
+            <TodoList list={list} fetchData={fetchData} onTitleClick={onTitleClick} />
         </>
     );
 };

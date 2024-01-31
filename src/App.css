@@ -135,3 +135,6 @@ ul#myUL li i {
 .fright{
     float: right;
 }
+.ltitle{
+    cursor: pointer;
+}

@@ -3,7 +3,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import toast, { Toaster } from 'react-hot-toast';
 
-const TodoList = ({ list, fetchData }) => {
+const TodoList = ({ list, fetchData, onTitleClick }) => {
     const [loader, setLoader] = useState(false);
 
     const deleteTodoItem = (itemId) => {
@@ -59,6 +59,10 @@ const TodoList = ({ list, fetchData }) => {
         });
     }
 
+    const onIteamClick = (itemTitle, itemId) => {
+        onTitleClick(itemTitle, itemId);
+    }
+
     return (
         <>
             <Toaster />
@@ -66,7 +70,9 @@ const TodoList = ({ list, fetchData }) => {
             <ul id="myUL">
                 {
                     list.map((item) => {
-                        return <li key={item.id}>{item.title} <i className="ri-delete-bin-line fright" onClick={ () => deleteTodoItem(item.id) }></i></li>
+                        return <li key={item.id}><span className="ltitle" onClick={ () => onIteamClick(item.title, item.id) }>{item.title}</span> 
+                            <i className="ri-delete-bin-line fright" onClick={ () => deleteTodoItem(item.id) }></i>
+                        </li>
                     })
                 }
                 {/* <li>Hit the gym <i className="ri-delete-bin-line fright"></i></li>
