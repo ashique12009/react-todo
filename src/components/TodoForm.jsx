@@ -10,7 +10,6 @@ const TodoForm = () => {
     const [addOrUpdate, setAddOrUpdate] = useState('add');
 
     const onTitleClick = (itemTitle, itemId) => {
-        console.log('ITEM', itemTitle, itemId);
         setTitle(itemTitle);
         setItemId(itemId);
         setAddOrUpdate('update');
