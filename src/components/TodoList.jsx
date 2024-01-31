@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TodoList = () => {
 
@@ -34,6 +36,7 @@ const TodoList = () => {
             } catch (error) {
                 setLoader(false);
                 console.error('Fetch error:', error.message);
+                toast.error('Error fetching data. Please try again.');
             }
         };
     
@@ -43,6 +46,7 @@ const TodoList = () => {
 
     return (
         <>
+            <ToastContainer />
             {loader && <div className="loader">Please wait!</div>}
             <ul id="myUL">
                 {
