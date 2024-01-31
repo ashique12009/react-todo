@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const TodoList = () => {
 
     const [list, setList] = useState([]);
+    const [loader, setLoader] = useState(false);
 
     useEffect(() => {
 
@@ -18,22 +19,40 @@ const TodoList = () => {
             redirect: 'follow'
         };
 
-        (async () => {
-            // fetch('https://jsonplaceholder.typicode.com/todos')
-            let response = await fetch(requestURL, requestOptions);
-            let result = await response.json();
-
-            console.log(result);
-        })()
+        const fetchData = async () => {
+            setLoader(true);
+            try {
+                let response = await fetch(requestURL, requestOptions);
+    
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+    
+                let result = await response.json();
+                setList(result.todos);
+                console.log(result);
+            } catch (error) {
+                setLoader(false);
+                console.error('Fetch error:', error.message);
+            }
+        };
+    
+        fetchData();
 
     }, [])
 
     return (
         <>
+            {loader && <div className="loader">Please wait!</div>}
             <ul id="myUL">
-                <li>Hit the gym <i className="ri-delete-bin-line fright"></i></li>
-                <li className="checked">Pay bills</li>
-                <li>Meet George</li>
+                {
+                    list.map((item) => {
+                        return <li key={item.id}>{item.title} <i className="ri-delete-bin-line fright"></i></li>
+                    })
+                }
+                {/* <li>Hit the gym <i className="ri-delete-bin-line fright"></i></li>
+                <li className="checked">Pay bills</li> 
+                */}
             </ul>
         </>
     );
