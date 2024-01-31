@@ -1,50 +1,10 @@
-import { useEffect, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import toast, { Toaster } from 'react-hot-toast';
 
-const TodoList = () => {
-
-    const [list, setList] = useState([]);
+const TodoList = ({ list, fetchData }) => {
     const [loader, setLoader] = useState(false);
-
-    const fetchData = async () => {
-        let requestURL = 'http://localhost/classic-php-todo-rest-api/index.php';
-
-        var myHeaders = new Headers();
-        myHeaders.append("token", "secret_token");
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        setLoader(true);
-        try {
-            let response = await fetch(requestURL, requestOptions);
-            console.log('RES', response);
-
-            if (!response.ok) {
-                toast.error(`HTTP error! Status: ${response.status}`);
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            let result = await response.json();
-            setList(result.todos);
-            setLoader(false);
-        } catch (error) {
-            setLoader(false);
-            console.error('Fetch error:', error.message);
-            toast.error('Error fetching data. Please try again.');
-        }
-    }
-
-    useEffect(() => {
-        console.log('TodoList mounted');    
-        fetchData();
-    }, [])
 
     const deleteTodoItem = (itemId) => {
         confirmAlert({
@@ -79,11 +39,8 @@ const TodoList = () => {
                             }
 
                             // Refresh the todo list
-                            fetchData();
                             setLoader(false);
-
-                            // Display a success message
-                            toast.success('Todo item deleted successfully');
+                            fetchData('delete');
                         } catch (error) {
                             setLoader(false);
                             console.error('Delete error:', error.message);
@@ -95,7 +52,7 @@ const TodoList = () => {
                     label: 'No',
                     onClick: () => {
                         // Display a cancellation message
-                        toast.info('Deletion cancelled');
+                        toast.error('Deletion cancelled');
                     },
                 },
             ],
@@ -104,7 +61,7 @@ const TodoList = () => {
 
     return (
         <>
-            <ToastContainer />
+            <Toaster />
             {loader && <div className="loader">Please wait!</div>}
             <ul id="myUL">
                 {
