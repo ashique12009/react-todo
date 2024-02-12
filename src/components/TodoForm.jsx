@@ -85,6 +85,9 @@ const TodoForm = () => {
 
                 const putResponse = await fetch(putURL, putOptions);
 
+                // Change button value from update to add
+                setAddOrUpdate('add');
+
                 if (!putResponse.ok) {
                     toast.error(`HTTP error! Status: ${putResponse.status}`);
                     throw new Error(`HTTP error! Status: ${putResponse.status}`);
@@ -138,7 +141,7 @@ const TodoForm = () => {
                             id="myInput"
                             placeholder="Title..."
                         />
-                        <input type="submit" className="addBtn" value="Add" />
+                        <input type="submit" className="addBtn" value={ addOrUpdate==='add' ? 'Add' : 'Update'} />
                     </div>
                 </div>
             </form>
