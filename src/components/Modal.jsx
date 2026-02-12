@@ -28,12 +28,17 @@ const Modal = ({open, setOpen}) => {
         },
         body: JSON.stringify(newTodo),
       });
+
+      // Clear the input fields after adding a new todo
+      setTitle("");
+      setDeadline("");
+      setStatus("");
+      
+      // Close the modal
+      setOpen(false);
     } catch (error) {
       console.error("Error adding todo:", error);
     }
-
-    // Refresh the list after adding a new todo
-    fetchTodos();
   };
 
   return (
@@ -47,7 +52,6 @@ const Modal = ({open, setOpen}) => {
           value={title} 
           onChange={(e) => { setTitle(e.target.value) }}
         />
-        <input type="text" id="todoDeadline" placeholder="Deadline" />
         <input 
           type="text" 
           id="todoDeadline" 
