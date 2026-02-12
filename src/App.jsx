@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Modal from "./components/Modal";
 import List from "./components/List";
 import Legend from "./components/Legend";
@@ -37,15 +37,18 @@ function App() {
 
   return (
     <>
-      <button className="add-btn" id="openModal">
-        Add a new todo
-      </button>
+      <div className="make-center">
+        <h1>Todo List</h1>
+        <button className="add-btn" id="openModal">
+          Add a new todo
+        </button>
 
-      <Modal />
+        <Modal />
 
-      <List />
+        <List />
 
-      <Legend />
+        <Legend />
+      </div>
     </>
   );
 }
