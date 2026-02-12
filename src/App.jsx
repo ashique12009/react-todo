@@ -45,9 +45,10 @@ function App() {
 
         <Modal />
 
-        <List />
-
-        <Legend />
+        <div className="flex-center">
+          <List />
+          <Legend />
+        </div>
       </div>
     </>
   );
