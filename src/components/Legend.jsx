@@ -2,7 +2,7 @@ import React from "react";
 
 const Legend = () => {
   return (
-    <div className="legend" id="legend" style="display: none;">
+    <div className="legend" id="legend" style={{ display: "none" }}>
       <div className="legend-item">
         <div className="legend-color done"></div>
         <span className="legend-label">Done</span>
