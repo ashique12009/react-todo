@@ -176,7 +176,7 @@ body {
 
 /* ── Legend ── */
 .legend {
-  margin-top: 36px;
+  margin-top: 20px;
   display: flex;
   gap: 32px;
   align-items: center;
@@ -219,6 +219,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 /* common css */
 .mt-10{
@@ -229,4 +230,13 @@ body {
 }
 .mt-30{
   margin-top: 30px;
+}
+.mx-width-460px{
+  max-width: 460px;
+}
+.m0auto{
+  margin: 0 auto;
+}
+.text-left{
+  text-align: left;
 }

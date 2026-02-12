@@ -40,18 +40,21 @@ function App() {
     <>
       <div className="make-center">
         <h1>Todo List</h1>
-        <button 
-          className="add-btn mt-20" 
-          id="openModal"
-          onClick={() => setOpenModal(true)}>
-          Add a new todo
-        </button>
+        <div className="flex-center">
+          <button
+            className="add-btn mt-20"
+            id="openModal"
+            onClick={() => setOpenModal(true)}
+          >
+            Add a new todo
+          </button>
+          <Legend />
+        </div>
 
         <Modal open={openModal} setOpen={setOpenModal} />
 
-        <div className="flex-center">
+        <div className="mx-width-460px mt-20 m0auto">
           <List />
-          <Legend />
         </div>
       </div>
     </>
