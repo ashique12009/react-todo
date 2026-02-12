@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./components/Modal";
 import List from "./components/List";
 import Legend from "./components/Legend";
 
 function App() {
   const API_URL = "http://localhost:3001/todos";
+  const [openModal, setOpenModal] = useState(false);
 
   // Get all todos
   const fetchTodos = async () => {
@@ -39,11 +40,14 @@ function App() {
     <>
       <div className="make-center">
         <h1>Todo List</h1>
-        <button className="add-btn" id="openModal">
+        <button 
+          className="add-btn mt-20" 
+          id="openModal"
+          onClick={() => setOpenModal(true)}>
           Add a new todo
         </button>
 
-        <Modal />
+        <Modal open={openModal} setOpen={setOpenModal} />
 
         <div className="flex-center">
           <List />

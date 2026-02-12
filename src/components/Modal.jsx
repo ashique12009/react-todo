@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-const Modal = () => {
+const Modal = ({open, setOpen}) => {
+
+  console.log("Modal open:", open);
+
+  if (!open) return null; // Don't render the modal if open is false
+
+  const API_URL = "http://localhost:3001/todos";
+
   const [title, setTitle] = useState("");
   const [deadline, setDeadline] = useState("");
   const [status, setStatus] = useState("");
@@ -60,7 +67,7 @@ const Modal = () => {
           <option value="in-progress">In progress</option>
         </select>
         <div className="modal-actions">
-          <button className="btn-cancel" id="cancelBtn">
+          <button className="btn-cancel" id="cancelBtn" onClick={() => setOpen(false)}>
             Cancel
           </button>
           <button className="btn-add" id="addBtn" onClick={addTodo}>
