@@ -6,13 +6,14 @@ import Legend from "./components/Legend";
 function App() {
   const API_URL = "http://localhost:3001/todos";
   const [openModal, setOpenModal] = useState(false);
+  const [todos, setTodos] = useState([]);
 
   // Get all todos
   const fetchTodos = async () => {
     try {
       const response = await fetch(API_URL);
       const data = await response.json();
-      return data;
+      setTodos(data);
     } catch (error) {
       console.error("Error fetching todos:", error);
     }
@@ -54,7 +55,7 @@ function App() {
         <Modal open={openModal} setOpen={setOpenModal} />
 
         <div className="mx-width-460px mt-20 m0auto">
-          <List />
+          <List todoList={todos} />
         </div>
       </div>
     </>
