@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-const Modal = ({ open, setOpen }) => {
-  console.log("Modal open:", open);
+const Modal = ({ open, setOpen, onAdd }) => {
 
   if (!open) return null; // Don't render the modal if open is false
 
@@ -11,33 +10,18 @@ const Modal = ({ open, setOpen }) => {
   const [deadline, setDeadline] = useState("");
   const [status, setStatus] = useState("not-started");
 
-  // Add a new todo
-  const addTodo = async () => {
+  const handleAdd = () => {
     const newTodo = {
       title,
       deadline,
       status,
     };
 
-    try {
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newTodo),
-      });
-
-      // Clear the input fields after adding a new todo
-      setTitle("");
-      setDeadline("");
-      setStatus("");
-
-      // Close the modal
-      setOpen(false);
-    } catch (error) {
-      console.error("Error adding todo:", error);
-    }
+    onAdd(newTodo); // 🔥 Telling App to add new todo
+    setTitle("");
+    setDeadline("");
+    setStatus("not-started");
+    setOpen(false);
   };
 
   return (
@@ -84,7 +68,7 @@ const Modal = ({ open, setOpen }) => {
           >
             Cancel
           </button>
-          <button className="btn-add" id="addBtn" onClick={addTodo}>
+          <button className="btn-add" id="addBtn" onClick={handleAdd}>
             Add
           </button>
         </div>

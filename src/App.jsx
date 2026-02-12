@@ -23,6 +23,25 @@ function App() {
     fetchTodos();
   }, []);
 
+  // Add a new todo
+  const addTodo = async (newTodo) => {
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTodo),
+      });
+
+      // Refresh the list after deleting a todo
+      fetchTodos();
+
+    } catch (error) {
+      console.error("Error adding todo:", error);
+    }
+  };
+
   // Delete a todo
   const deleteTodo = async (id) => {
     try {
@@ -52,7 +71,7 @@ function App() {
           <Legend />
         </div>
 
-        <Modal open={openModal} setOpen={setOpenModal} />
+        <Modal open={openModal} setOpen={setOpenModal} onAdd={addTodo} />
 
         <div className="mx-width-460px mt-20 m0auto">
           <List todoList={todos} />
