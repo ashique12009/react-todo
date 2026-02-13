@@ -8,6 +8,8 @@ function App() {
   const [openModal, setOpenModal] = useState(false);
   const [todos, setTodos] = useState([]);
 
+  const [selectedTodo, setSelectedTodo] = useState(null);
+
   // Get all todos
   const fetchTodos = async () => {
     try {
@@ -36,7 +38,6 @@ function App() {
 
       // Refresh the list after deleting a todo
       fetchTodos();
-
     } catch (error) {
       console.error("Error adding todo:", error);
     }
@@ -56,6 +57,23 @@ function App() {
     fetchTodos();
   };
 
+  // Update a todo
+  const updateTodo = async (updatedTodo) => {
+    try {
+      await fetch(`${API_URL}/${updatedTodo.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTodo),
+      });
+
+      fetchTodos();
+    } catch (error) {
+      console.error("Error updating todo:", error);
+    }
+  };
+
   return (
     <>
       <div className="make-center">
@@ -64,17 +82,33 @@ function App() {
           <button
             className="add-btn mt-20"
             id="openModal"
-            onClick={() => setOpenModal(true)}
+            onClick={() => {
+              setOpenModal(true);
+              setSelectedTodo(null);
+            }}
           >
             Add a new todo
           </button>
           <Legend />
         </div>
 
-        <Modal open={openModal} setOpen={setOpenModal} onAdd={addTodo} />
+        <Modal
+          open={openModal}
+          setOpen={setOpenModal}
+          onAdd={addTodo} 
+          onUpdate={updateTodo} 
+          selectedTodo={selectedTodo}
+        />
 
         <div className="mx-width-460px mt-20 m0auto">
-          <List todoList={todos} onDelete={deleteTodo} />
+          <List
+            todoList={todos}
+            onDelete={deleteTodo}
+            onEdit={(todo) => {
+              setSelectedTodo(todo);
+              setOpenModal(true);
+            }}
+          />
         </div>
       </div>
     </>

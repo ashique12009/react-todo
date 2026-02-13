@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Modal = ({ open, setOpen, onAdd }) => {
-
+const Modal = ({ open, setOpen, onAdd, selectedTodo, onUpdate }) => {
   if (!open) return null; // Don't render the modal if open is false
 
   const API_URL = "http://localhost:3001/todos";
@@ -10,24 +9,38 @@ const Modal = ({ open, setOpen, onAdd }) => {
   const [deadline, setDeadline] = useState("");
   const [status, setStatus] = useState("not-started");
 
+  useEffect(() => {
+    if (selectedTodo) {
+      setTitle(selectedTodo.title);
+      setDeadline(selectedTodo.deadline);
+      setStatus(selectedTodo.status);
+    } else {
+      setTitle("");
+      setDeadline("");
+      setStatus("not-started");
+    }
+  }, [selectedTodo]);
+
   const handleAdd = () => {
-    const newTodo = {
+    const todoData = {
       title,
       deadline,
       status,
     };
 
-    onAdd(newTodo); // 🔥 Telling App to add new todo
-    setTitle("");
-    setDeadline("");
-    setStatus("not-started");
+    if (selectedTodo) {
+      onUpdate({ ...todoData, id: selectedTodo.id });
+    } else {
+      onAdd(todoData);
+    }
+
     setOpen(false);
   };
 
   return (
     <div className="modal-overlay" id="modalOverlay">
       <div className="modal">
-        <h2>Add new todo</h2>
+        <h2>{selectedTodo ? "Edit Todo" : "Add New Todo"}</h2>
         <input
           type="text"
           id="todoTitle"
@@ -69,7 +82,7 @@ const Modal = ({ open, setOpen, onAdd }) => {
             Cancel
           </button>
           <button className="btn-add" id="addBtn" onClick={handleAdd}>
-            Add
+            {selectedTodo ? "Update" : "Add"}
           </button>
         </div>
       </div>
