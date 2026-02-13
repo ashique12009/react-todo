@@ -1,6 +1,6 @@
 import React from "react";
 
-const List = ({ todoList }) => {
+const List = ({ todoList, onDelete }) => {
   console.log("Todo list in List component:", todoList);
   return (
     <div className="todo-list" id="todoList">
@@ -14,7 +14,7 @@ const List = ({ todoList }) => {
             <div className="todo-title text-left">{todo.title}</div>
             <div className="todo-deadline">Deadline: {todo.deadline}</div>
           </div>
-          <div className="todo-delete">X</div>
+          <div className="todo-delete" onClick={() => onDelete(todo.id)}>X</div>
         </div>
       ))}
     </div>

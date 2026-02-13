@@ -74,7 +74,7 @@ function App() {
         <Modal open={openModal} setOpen={setOpenModal} onAdd={addTodo} />
 
         <div className="mx-width-460px mt-20 m0auto">
-          <List todoList={todos} />
+          <List todoList={todos} onDelete={deleteTodo} />
         </div>
       </div>
     </>

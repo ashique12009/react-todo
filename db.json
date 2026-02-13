@@ -31,39 +31,15 @@
       "status": "not-started"
     },
     {
-      "id": "f1c4",
-      "title": "Test title",
-      "deadline": "test deadline",
-      "status": "not-started"
-    },
-    {
       "id": "5b91",
       "title": "Hello there",
       "deadline": "Now",
       "status": "in-progress"
     },
     {
-      "id": "c890",
-      "title": "Make it",
-      "deadline": "now",
-      "status": "not-started"
-    },
-    {
-      "id": "acc3",
-      "title": "Test 3",
-      "deadline": "now",
-      "status": "not-started"
-    },
-    {
       "id": "ac28",
       "title": "This is title 4",
       "deadline": "now",
-      "status": "not-started"
-    },
-    {
-      "id": "594a",
-      "title": "Title 5",
-      "deadline": "Now",
       "status": "not-started"
     }
   ]
