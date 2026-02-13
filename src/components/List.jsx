@@ -14,6 +14,7 @@ const List = ({ todoList }) => {
             <div className="todo-title text-left">{todo.title}</div>
             <div className="todo-deadline">Deadline: {todo.deadline}</div>
           </div>
+          <div className="todo-delete">X</div>
         </div>
       ))}
     </div>
