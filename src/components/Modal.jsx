@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 const Modal = ({ open, setOpen, onAdd, selectedTodo, onUpdate }) => {
   if (!open) return null; // Don't render the modal if open is false
 
-  const API_URL = "http://localhost:3001/todos";
-
   const [title, setTitle] = useState("");
   const [deadline, setDeadline] = useState("");
   const [status, setStatus] = useState("not-started");
