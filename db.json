@@ -25,22 +25,10 @@
       "status": "In progress"
     },
     {
-      "id": "8566",
-      "title": "Test title",
-      "deadline": "test deadline",
-      "status": "not-started"
-    },
-    {
-      "id": "5b91",
-      "title": "Hello there",
-      "deadline": "Now",
+      "id": "5feb",
+      "title": "MongoDB",
+      "deadline": "This month",
       "status": "in-progress"
-    },
-    {
-      "title": "This is title 3",
-      "deadline": "Now",
-      "status": "in-progress",
-      "id": "ac28"
     }
   ]
 }
