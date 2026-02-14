@@ -1,6 +1,6 @@
 # React Todo
 
-An eye-catchy Todo application by ReactJS.
+🚀 Just built a clean and eye-catchy React.js Todo Application focusing on reusable components, services, hooks, JSON-server, smooth UI interactions, and REST API integration. This project reflects my approach to writing scalable and maintainable frontend code. By separation of service and hooks it makes easier to write test cases.
 
 ## Few Screenshots
 List:
