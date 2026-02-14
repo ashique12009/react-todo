@@ -1,16 +1,13 @@
-# React + Vite
+# React Todo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An eye-catiche Todo application by ReactJS.
 
-Currently, two official plugins are available:
+## Few Screenshots
+List:
+<img width="1358" height="1090" alt="Image" src="https://github.com/user-attachments/assets/9c65195e-e75f-42ef-99a4-46784ef41e07" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Adding Todo by modal:
+<img width="1658" height="1312" alt="Image" src="https://github.com/user-attachments/assets/6119ca87-c4a8-432f-a72f-0d3355eb34b4" />
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Update a Todo item by modal:
+<img width="1518" height="1290" alt="Image" src="https://github.com/user-attachments/assets/cb42fa17-898b-4393-b600-e5695047fc4d" />
