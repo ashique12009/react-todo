@@ -1,6 +1,6 @@
 # React Todo
 
-An eye-catiche Todo application by ReactJS.
+An eye-catchy Todo application by ReactJS.
 
 ## Few Screenshots
 List:
